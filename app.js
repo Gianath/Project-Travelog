@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 
-app.use(express.static('./public'));
+app.use('/assets', express.static('./public/assets'));
+app.use('/css', express.static('./public/css'));
+app.use(express.static('./public/html'));
 
 const port = process.env.PORT || 5000;
 
