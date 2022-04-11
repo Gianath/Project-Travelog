@@ -23,6 +23,10 @@
         <div class="col-3">
           <form class="text-center text-white">
             <div class="mb-3 text-start">
+              <label for="Username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="Username">
+            </div>
+            <div class="mb-3 text-start">
               <label for="Email" class="form-label">Email</label>
               <input type="email" class="form-control" id="Email">
             </div>
@@ -30,13 +34,26 @@
               <label for="Password" class="form-label">Password</label>
               <input type="password" class="form-control" id="Password">
             </div>
+            <div class="mb-3 text-start">
+              <label for="CPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="CPassword">
+            </div>
+            <div class="mb-3 form-check text-start">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+              <label class="form-check-label" for="invalidCheck">
+                I Agree to terms and conditions!
+              </label>
+              <div class="invalid-feedback">
+                You must agree before submitting.
+              </div>
+            </div>
             <button type="submit" class="btn mt-3 px-5 py-2 text-white" style="background-color:#FF984E">Login</button>
           </form>
         </div>
       </div>
     </main>
     <footer class="mt-auto pb-4 text-white d-flex">
-      Don't have an account <a href="register.html" class="text-decoration-none"><p class="mx-1" style="color:#FF984E">Click Here!</p></a> 
+      Already have an account <a href="index.html" class="text-decoration-none"><p class="mx-1" style="color:#FF984E">Click Here!</p></a> 
     </footer>
   </div>
 </body>
