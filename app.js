@@ -1,26 +1,20 @@
-const path = require("path");
-const express = require("express");
+const path = require('path');
+const express = require('express');
+const register = require('./routes/register');
 
 const app = express();
 
-app.use(express.static("./public"));
+app.use(express.static('./public'));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/html/index.html"));
+app.use('/register', register);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/html/index.html'));
 });
 
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/html/login.html"));
-});
-
-app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/html/register.html"));
-});
-
-app.post("/register/api", (req, res) => {
-  console.log(req.body);
-  res.json({ status: "success", name: req.body.name, email: req.body.email });
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname + '/public/html/login.html'));
 });
 
 const port = process.env.PORT || 5000;
