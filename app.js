@@ -7,8 +7,6 @@ const app = express();
 const register = require("./routes/register");
 const login = require("./routes/login");
 
-// Models
-
 // Middleware
 app.use(express.static("./public"));
 app.use(express.json());
