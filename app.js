@@ -1,20 +1,23 @@
-const path = require('path');
-const express = require('express');
-const register = require('./routes/register');
+const path = require("path");
+const express = require("express");
 
 const app = express();
 
-app.use(express.static('./public'));
+// Routes
+const register = require("./routes/register");
+const login = require("./routes/login");
+
+// Middleware
+app.use(express.static("./public"));
 app.use(express.json());
 
-app.use('/register', register);
+app.use("/register", register);
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/public/html/index.html'));
-});
+app.use("/login", login);
 
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname + '/public/html/login.html'));
+// Dasboard (Nanti)
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/public/html/index.html"));
 });
 
 const port = process.env.PORT || 5000;
