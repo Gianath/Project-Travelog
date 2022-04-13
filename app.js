@@ -4,7 +4,7 @@ const connectDB = require("./db/connect");
 
 const app = express();
 
-// Routes
+// Routes Import
 const register = require("./routes/register");
 const login = require("./routes/login");
 
