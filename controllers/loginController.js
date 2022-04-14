@@ -1,5 +1,6 @@
 const path = require("path");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // User Model
 const userModel = require("../models/user");
@@ -15,15 +16,29 @@ const checkCredentials = async (req, res) => {
     const resp = await userModel.findOne({
       email: email,
     });
+    if (!resp) {
+      return res.json({ status: "Failed", body: req.body });
+    }
     bcrypt.compare(password, resp.password, (err, result) => {
       if (err) {
         console.log(err);
       } else if (result) {
+        const token = jwt.sign(
+          { id: resp._id, username: resp.username },
+          process.env.JWT_SECRET,
+          {
+            expiresIn: "300s",
+          }
+        );
+        res
+          .cookie("authToken", token, {
+            httpOnly: true,
+          })
+          .json({ status: "success", body: req.body });
         console.log("Succesfully login!\n", resp);
-        res.json({ status: "ok", body: req.body });
       } else if (!result) {
         console.log("Failed login!\n", resp);
-        res.json({ status: "Failed", body: req.body });
+        res.clearCookie("authToken").json({ status: "Failed", body: req.body });
       }
     });
   } catch (error) {
