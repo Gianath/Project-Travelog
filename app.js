@@ -8,7 +8,7 @@ const app = express();
 // Routes Import
 const register = require("./routes/register");
 const login = require("./routes/login");
-// const dashboard = require("./routes/dashboard");
+const dashboard = require("./routes/dashboard");
 
 //ENV
 require("dotenv").config();
@@ -21,9 +21,9 @@ app.use(express.json());
 // Routes
 app.use("/register", register);
 app.use("/login", login);
-// app.use("/dashboard", dashboard);
+app.use("/dashboard", dashboard);
 
-// Dasboard (Nanti)
+// Homepage (Nanti)
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/html/index.html"));
 });

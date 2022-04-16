@@ -6,7 +6,7 @@ const {
   checkCredentials,
 } = require("../controllers/loginController");
 
-router.get("/", getLoginPage);
-router.post("/api", checkCredentials);
+router.route("/").get(getLoginPage);
+router.route("/api").post(checkCredentials);
 
 module.exports = router;
