@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const connectDB = require("./db/connect");
 
 const app = express();
@@ -7,17 +8,20 @@ const app = express();
 // Routes Import
 const register = require("./routes/register");
 const login = require("./routes/login");
+// const dashboard = require("./routes/dashboard");
 
 //ENV
 require("dotenv").config();
 
 // Middleware
+app.use(cookieParser());
 app.use(express.static("./public"));
 app.use(express.json());
 
 // Routes
 app.use("/register", register);
 app.use("/login", login);
+// app.use("/dashboard", dashboard);
 
 // Dasboard (Nanti)
 app.get("/", (req, res) => {

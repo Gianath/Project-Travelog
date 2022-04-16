@@ -15,3 +15,5 @@ const authenticate = async (req, res, next) => {
     return res.json({ status: "failed", msg: error });
   }
 };
+
+module.exports = authenticate;
