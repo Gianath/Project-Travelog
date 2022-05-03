@@ -9,6 +9,7 @@ const app = express();
 const register = require("./routes/register");
 const login = require("./routes/login");
 const dashboard = require("./routes/dashboard");
+const user = require("./routes/user");
 
 //ENV
 require("dotenv").config();
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use("/register", register);
 app.use("/login", login);
 app.use("/dashboard", dashboard);
+app.use("/user", user);
 
 // Homepage (Nanti)
 app.get("/", (req, res) => {

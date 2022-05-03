@@ -1,14 +1,9 @@
 const path = require("path");
-const jwt = require("jsonwebtoken");
 
 const postModel = require("../models/post");
 
 const getDashboardPage = async () => {
   res.sendFile(path.join(__dirname, "..", "public", "html", "dashboard.html"));
-};
-
-const getCurrentUser = async (req, res) => {
-  res.json({ userID: req.userID, username: req.username });
 };
 
 const getPostByView = async (req, res) => {
@@ -31,7 +26,6 @@ const getPostByLike = async (req, res) => {
 };
 module.exports = {
   getDashboardPage,
-  getCurrentUser,
   getPostByView,
   getPostByLike,
 };
