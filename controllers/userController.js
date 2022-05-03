@@ -13,6 +13,41 @@ const getCurrentUser = async (req, res) => {
   res.json({ username, email, bio, postCreated, postLiked });
 };
 
+const updateUserProfile = async (req, res) => {
+  const { username, email, password, bio } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    const resp = await userModel.findOneAndUpdate(
+      { _id: req.userID },
+      {
+        username,
+        email,
+        password: hashedPassword,
+        bio,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!resp) {
+      res.json({ status: "failed", error: "not found" });
+    }
+    res.json({
+      status: "Success",
+      username: resp.username,
+      email: resp.email,
+      bio: resp.bio,
+      postCreated: resp.postCreated,
+      postLiked: resp.postLiked,
+    });
+  } catch (error) {
+    res.json({ status: "failed", error });
+    console.log(error);
+  }
+};
+
 const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -60,7 +95,7 @@ const checkCredentials = async (req, res) => {
             httpOnly: true,
           })
           .json({ status: "success", body: req.body });
-        console.log("Succesfully login!\n", resp);
+        console.log("Successfully login!\n", resp);
       } else if (!result) {
         console.log("Failed login!\n", resp);
         res.clearCookie("authToken").json({ status: "Failed", body: req.body });
@@ -76,4 +111,5 @@ module.exports = {
   registerUser,
   checkCredentials,
   getCurrentUser,
+  updateUserProfile,
 };
