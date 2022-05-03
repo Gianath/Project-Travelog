@@ -8,3 +8,5 @@ const {
 
 router.route("/api/getPostByView").get(getPostByView);
 router.route("/api/getPostByLike").get(getPostByLike);
+
+module.exports = router;
