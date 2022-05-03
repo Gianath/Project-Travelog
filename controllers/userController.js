@@ -5,7 +5,12 @@ const jwt = require("jsonwebtoken");
 const userModel = require("../models/user");
 
 const getCurrentUser = async (req, res) => {
-  res.json({ userID: req.userID, username: req.username });
+  const { username, email, bio, postCreated, postLiked } =
+    await userModel.findOne({
+      _id: req.userID,
+    });
+
+  res.json({ username, email, bio, postCreated, postLiked });
 };
 
 const registerUser = async (req, res) => {
@@ -19,7 +24,7 @@ const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
-    console.log("Succesfully sent!\n", resp);
+    console.log("Successfully sent!\n", resp);
     res.json({ status: "success" });
   } catch (error) {
     if (error.code === 11000) {
