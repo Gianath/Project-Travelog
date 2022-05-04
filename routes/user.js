@@ -6,6 +6,7 @@ const {
   registerUser,
   getCurrentUser,
   updateUserProfile,
+  logoutCurrentUser,
 } = require("../controllers/userController");
 
 const auth = require("../middleware/auth");
@@ -16,5 +17,6 @@ router
   .patch(auth, updateUserProfile)
   .get(auth, getCurrentUser);
 router.route("/api/register").post(registerUser);
+router.route("/api/logout").post(logoutCurrentUser);
 
 module.exports = router;

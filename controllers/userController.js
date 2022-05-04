@@ -13,6 +13,17 @@ const getCurrentUser = async (req, res) => {
   res.json({ username, email, bio, postCreated, postLiked });
 };
 
+const logoutCurrentUser = async (req, res) => {
+  try {
+    console.log("logged out");
+    res
+      .clearCookie("authToken")
+      .json({ status: "success", msg: "successfully logout" });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const updateUserProfile = async (req, res) => {
   const { username, email, password, bio } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -93,6 +104,8 @@ const checkCredentials = async (req, res) => {
         res
           .cookie("authToken", token, {
             httpOnly: true,
+            // secure: true,
+            sameSite: "strict",
           })
           .json({ status: "success", body: req.body });
         console.log("Successfully login!\n", resp);
@@ -112,4 +125,5 @@ module.exports = {
   checkCredentials,
   getCurrentUser,
   updateUserProfile,
+  logoutCurrentUser,
 };
