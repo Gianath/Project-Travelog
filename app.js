@@ -6,9 +6,9 @@ const connectDB = require("./db/connect");
 const app = express();
 
 // Routes Import
-const register = require("./routes/register");
-const login = require("./routes/login");
-const dashboard = require("./routes/dashboard");
+const pages = require("./routes/page");
+const users = require("./routes/user");
+const posts = require("./routes/post");
 
 //ENV
 require("dotenv").config();
@@ -19,9 +19,9 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 // Routes
-app.use("/register", register);
-app.use("/login", login);
-app.use("/dashboard", dashboard);
+app.use(pages);
+app.use("/user", users);
+app.use("/post", posts);
 
 // Homepage (Nanti)
 app.get("/", (req, res) => {
