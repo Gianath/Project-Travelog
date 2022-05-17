@@ -19,7 +19,19 @@ const getPostByLike = async (req, res) => {
   }
 };
 
+const getPostByID = async (req, res) => {
+  try {
+    const result = await postModel.findOne({
+      _id: req.params.id,
+    });
+    res.json({ status: "success", results: result });
+  } catch (error) {
+    res.json({ status: "failed", msg: error });
+  }
+};
+
 module.exports = {
   getPostByView,
   getPostByLike,
+  getPostByID,
 };
