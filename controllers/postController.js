@@ -1,5 +1,23 @@
 const postModel = require("../models/post");
 
+const createPost = async (req, res) => {
+  try {
+    const { title, content, country } = req.body;
+    const userID = req.userID;
+    console.log(userID);
+    const resp = await postModel.create({
+      authorID: userID,
+      title: title,
+      content: content,
+      country: country,
+    });
+
+    res.json({ status: "success", msg: resp });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getPostByView = async (req, res) => {
   try {
     const result = await postModel.find().sort({ views: "desc" });
@@ -31,6 +49,7 @@ const getPostByID = async (req, res) => {
 };
 
 module.exports = {
+  createPost,
   getPostByView,
   getPostByLike,
   getPostByID,
