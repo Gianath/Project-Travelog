@@ -8,6 +8,7 @@ const PostSchema = new mongoose.Schema(
     content: { type: String, required: true },
     country: { type: String, required: true },
     commentIDs: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    date: { type: Date, required: true },
     likes: { type: Number, default: 0 },
     views: { type: Number, default: 0 },
   },
