@@ -4,7 +4,6 @@ const createPost = async (req, res) => {
   try {
     const { title, content, country } = req.body;
     const userID = req.userID;
-    console.log(userID);
     const resp = await postModel.create({
       authorID: userID,
       title: title,
