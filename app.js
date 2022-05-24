@@ -9,6 +9,7 @@ const app = express();
 const pages = require("./routes/page");
 const users = require("./routes/user");
 const posts = require("./routes/post");
+const comments = require("./routes/comment");
 
 //ENV
 require("dotenv").config();
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(pages);
 app.use("/user", users);
 app.use("/post", posts);
+app.use("/comment", comments);
 
 // Homepage (Nanti)
 app.get("/", (req, res) => {
