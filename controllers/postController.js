@@ -18,6 +18,29 @@ const createPost = async (req, res) => {
   }
 };
 
+const updatePost = async (req, res) => {
+  try {
+    const { title, content, country, commentID } = req.body;
+    const resp = await postModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        title,
+        content,
+        country,
+        $push: { commentIDs: commentID },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    res.json({ status: "success", msg: resp });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const getPostByView = async (req, res) => {
   try {
     const result = await postModel.find().sort({ views: "desc" });
@@ -50,6 +73,7 @@ const getPostByID = async (req, res) => {
 
 module.exports = {
   createPost,
+  updatePost,
   getPostByView,
   getPostByLike,
   getPostByID,
