@@ -43,7 +43,10 @@ const updatePost = async (req, res) => {
 
 const getPostByView = async (req, res) => {
   try {
-    const result = await postModel.find().sort({ views: "desc" });
+    const result = await postModel
+      .find()
+      .sort({ views: "desc" })
+      .populate("authorID");
     res.json({ status: "success", results: result });
   } catch (error) {
     console.log(error);
@@ -53,7 +56,10 @@ const getPostByView = async (req, res) => {
 
 const getPostByLike = async (req, res) => {
   try {
-    const result = await postModel.find().sort({ likes: "desc" });
+    const result = await postModel
+      .find()
+      .sort({ likes: "desc" })
+      .populate("authorID");
     res.json({ status: "success", results: result });
   } catch (error) {
     res.json({ status: "failed", msg: error });
