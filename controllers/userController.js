@@ -111,7 +111,7 @@ const checkCredentials = async (req, res) => {
         console.log("Successfully login!\n", resp);
       } else if (!result) {
         console.log("Failed login!\n", resp);
-        res.clearCookie("authToken").json({ status: "Failed", body: req.body });
+        res.clearCookie("authToken").json({ status: "failed", body: req.body });
       }
     });
   } catch (error) {
