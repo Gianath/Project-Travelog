@@ -14,9 +14,9 @@ loginForm.addEventListener("submit", async (e) => {
       email,
       password,
     }),
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(res));
+  }).then((res) => res.json());
 
-  console.log(email, password);
+  if (res.status === "success") {
+    window.location.href = "/dashboard";
+  }
 });
