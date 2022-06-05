@@ -10,7 +10,7 @@ const getCurrentUser = async (req, res) => {
       _id: req.userID,
     });
 
-  res.json({ username, email, bio, postCreated, postLiked });
+  res.json({ status: "success", username, email, bio, postCreated, postLiked });
 };
 
 const logoutCurrentUser = async (req, res) => {
@@ -98,7 +98,6 @@ const checkCredentials = async (req, res) => {
           { id: resp._id, username: resp.username },
           process.env.JWT_SECRET,
           {
-            expiresIn: "300s",
           }
         );
         res
