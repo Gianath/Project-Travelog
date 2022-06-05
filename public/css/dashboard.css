@@ -152,6 +152,7 @@ main>.content {
 .country-flag>a>div>div,
 .country-flag>a>div>div>img {
   height: 100%;
+  width: auto;
 }
 
 .country-flag>a>div>h2 {
