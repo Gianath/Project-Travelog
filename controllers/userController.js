@@ -98,6 +98,7 @@ const checkCredentials = async (req, res) => {
           { id: resp._id, username: resp.username },
           process.env.JWT_SECRET,
           {
+            expiresIn: "600s",
           }
         );
         res
