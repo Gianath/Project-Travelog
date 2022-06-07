@@ -55,6 +55,7 @@ nav {
 
 main {
   width: calc(100% - 9rem);
+  height: 100%;
 }
 
 main>header {
