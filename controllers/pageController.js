@@ -12,8 +12,15 @@ const getDashboardPage = async (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "html", "dashboard.html"));
 };
 
+const getDestinationPage = async (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "..", "public", "html", "destination.html")
+  );
+};
+
 module.exports = {
   getLoginPage,
   getRegisterPage,
   getDashboardPage,
+  getDestinationPage,
 };
