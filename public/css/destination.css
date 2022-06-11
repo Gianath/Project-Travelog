@@ -107,7 +107,7 @@ main>header {
 main>.content {
   width: 97.3%;
   height: calc(90% - 6rem);
-  margin: 1.8rem 1.35rem;
+  margin: 2rem 1.35%;
   display: flex;
 }
 
