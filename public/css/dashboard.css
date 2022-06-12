@@ -235,6 +235,11 @@ main>.content {
   width: 15%;
 }
 
+.view-icon img,
+.like-icon img {
+  width: 100%;
+}
+
 .view-number,
 .like-number {
   align-self: center;
