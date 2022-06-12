@@ -81,9 +81,19 @@ const getPostByDestination = async (req, res) => {
 
 const getPostByID = async (req, res) => {
   try {
-    const result = await postModel.findOne({
-      _id: req.params.id,
-    });
+    const result = await postModel
+      .findOne({
+        _id: req.params.id,
+      })
+      // .populate(["authorID", "commentIDs"])
+      .populate("authorID")
+      .populate({
+        path: "commentIDs",
+        populate: {
+          path: "authorID",
+          model: "User",
+        },
+      });
     res.json({ status: "success", results: result });
   } catch (error) {
     res.json({ status: "failed", msg: error });
