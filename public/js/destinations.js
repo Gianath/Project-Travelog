@@ -50,20 +50,20 @@ const removeActiveRegion = () => {
 
 destinationContainer.addEventListener("click", async (e) => {
   const el = e.target;
-  var country;
+  var city;
   if (el.classList.contains("regContainer")) {
-    country = el.dataset.region;
+    city = el.dataset.region;
     removeActiveRegion();
     el.setAttribute("class", "regContainer activeRegion");
   } else if (el.parentElement.classList.contains("regContainer")) {
-    country = el.parentElement.dataset.region;
+    city = el.parentElement.dataset.region;
     removeActiveRegion();
     el.parentElement.setAttribute("class", "regContainer activeRegion");
   }
-  if (country) {
+  if (city) {
     try {
       postContainer.innerHTML = "";
-      var res = await fetch(`/post/api?country=${country}`)
+      var res = await fetch(`/post/api?city=${city}`)
         .then((res) => res.json())
         .then((res) => res.results);
 

@@ -66,11 +66,11 @@ const getPostByLike = async (req, res) => {
   }
 };
 
-const getPostByCountry = async (req, res) => {
+const getPostByDestination = async (req, res) => {
   try {
     const result = await postModel
       .find({
-        country: req.query.country,
+        city: req.query.city,
       })
       .populate("authorID");
     res.json({ status: "success", results: result });
@@ -95,6 +95,6 @@ module.exports = {
   updatePost,
   getPostByView,
   getPostByLike,
-  getPostByCountry,
+  getPostByDestination,
   getPostByID,
 };

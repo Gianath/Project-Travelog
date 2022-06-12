@@ -6,6 +6,7 @@ const PostSchema = new mongoose.Schema(
     authorID: { type: Schema.Types.ObjectId, ref: "User" },
     title: { type: String, required: true },
     content: { type: String, required: true },
+    city: { type: String, required: true },
     country: { type: String, required: true },
     commentIDs: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     date: { type: Date, default: Date.now },
