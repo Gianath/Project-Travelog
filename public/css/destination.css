@@ -118,6 +118,7 @@ main>.content {
 }
 
 .right-container {
+  position: relative;
   width: 63.65%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   height: 100%;
@@ -125,7 +126,9 @@ main>.content {
 }
 
 .top-destination-title,
-.post-title {
+.post-title,
+.show-post-title,
+.show-comment-title {
   height: 4rem;
   margin-left: 1.5rem;
   display: flex;
@@ -181,6 +184,11 @@ main>.content {
   padding-left: 5%;
 }
 
+.postList {
+  width: 100%;
+  height: 100%;
+}
+
 .posts__container {
   position: relative;
   top: -1rem;
@@ -212,4 +220,106 @@ main>.content {
 .subCont-title2 {
   color: grey;
   margin-left: 1.5rem
+}
+
+.showPost,
+.showComment {
+  position: absolute;
+  background-color: white;
+  transition: all .5s linear;
+  width: 100%;
+  height: 100%;
+  left: calc(100% + 1.5rem);
+  top: 0;
+}
+
+.showPostActive,
+.showCommentActive {
+  left: 0;
+}
+
+.show-post-title>img,
+.show-comment-title>img {
+  margin-right: 2%;
+  cursor: pointer;
+}
+
+.commentBack {
+  color: #131C3D;
+  opacity: 30%;
+}
+
+.show_post_container,
+.show_comment_container {
+  margin-left: 1.5rem;
+  width: calc(100% - 3rem);
+  height: calc(100% - 4rem);
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.show_post_container::-webkit-scrollbar,
+.show_comment_container::-webkit-scrollbar {
+  display: none;
+}
+
+.show_post_title,
+.show_comment_title {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.likes-comments {
+  width: 100%;
+  display: flex;
+  gap: 8%;
+  padding: 3% 0;
+}
+
+.likesLogo,
+.commentsLogo {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.commentsLogo {
+  cursor: pointer;
+}
+
+.likes-comments img {
+  padding-right: 8%;
+}
+
+.show_comment_content {
+  width: 98%;
+  margin-left: 1%;
+  margin-bottom: 2%;
+  height: 20%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--dark);
+}
+
+.show_comment_content>img {
+  height: 60%;
+  margin: 0 3%;
+}
+
+.comment-title {
+  padding-bottom: 1%;
+}
+
+.comment-title span:first-child {
+  font-size: 1.2rem;
+}
+
+.comment-title span:nth-child(2) {
+  font-size: 0.8rem;
+  color: #131C3D;
+  opacity: 30%;
 }
