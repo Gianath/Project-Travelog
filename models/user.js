@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var Schema = mongoose.Schema;
 
 const UserSchema = new mongoose.Schema(
   {
@@ -8,6 +9,7 @@ const UserSchema = new mongoose.Schema(
     bio: { type: String, default: "Hi" },
     postCreated: { type: Number, default: 0 },
     postLiked: { type: Number, default: 0 },
+    likedPostID: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   },
   { collection: "Users" }
 );
