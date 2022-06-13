@@ -9,7 +9,6 @@ const createPost = async (req, res) => {
       title: title,
       content: content,
       country: country,
-      date: date,
     });
 
     res.json({ status: "success", msg: resp });
