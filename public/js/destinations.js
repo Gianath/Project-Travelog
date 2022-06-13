@@ -242,7 +242,6 @@ commentForm.addEventListener("submit", async (e) => {
     })
       .then((res) => res.json())
       .then((res) => res.msg);
-    console.log(res);
 
     const res2 = await fetch("/post/api/" + postid, {
       method: "PATCH",
