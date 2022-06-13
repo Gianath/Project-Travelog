@@ -10,6 +10,8 @@ const showComment = document.getElementById("showComment");
 const backBtnPost = document.getElementById("backBtnPost");
 var commentBtnPost;
 const backBtnComment = document.getElementById("backBtnComment");
+const commentForm = document.getElementById("commentForm");
+const commentFormBody = document.getElementById("commentFormBody");
 const userprofile = document.getElementById("username");
 const logoutBtn = document.getElementById("logoutBtn");
 
@@ -161,63 +163,101 @@ function createListenerCommentBtn() {
     }
 
     if (postID) {
-      try {
-        show_comment_container.innerHTML = "";
-
-        var res = await fetch(`/post/api/${postID}`)
-          .then((res) => res.json())
-          .then((res) => res.results);
-
-        show_comment_container.innerHTML = `
-          <div class="show_comment_title">
-          ${res.title}
-          </div>
-          <div class="country-city-author">
-          ${res.city}, ${res.country} / by. ${res.authorID.username}
-          </div>
-          <div class="likes-comments">
-            <div class="likesLogo">
-              <img src="../assets/like.svg" alt="">
-              <p>${res.likes} Likes</p>
-            </div>
-            <div class="commentsLogo" id="commentBtnPost">
-              <img src="../assets/comment.svg" alt="">
-              <p>${res.commentIDs.length} Comments</p>
-            </div>
-          </div>
-        `;
-
-        showComment.classList.add("showCommentActive");
-
-        res.commentIDs.forEach((element) => {
-          var day = new Date(element.date).getDate();
-          var month = new Date(element.date).getMonth();
-          var year = new Date(element.date).getFullYear();
-
-          show_comment_container.innerHTML += `
-          <div class="show_comment_content">
-            <img src="../assets/profile-picture-blank.svg" alt="">
-            <div class="show_comment_text">
-              <div class="comment-title">
-                <span>${element.authorID.username}</span>
-                <span>${day}/${month}/${year}</span>
-              </div>
-              <div class="comment-body">
-                ${element.content}
-              </div>
-            </div>
-          </div>
-          `;
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      await renderComments(postID);
     }
   });
 }
 
+async function renderComments(postID) {
+  try {
+    show_comment_container.innerHTML = "";
+
+    var res = await fetch(`/post/api/${postID}`)
+      .then((res) => res.json())
+      .then((res) => res.results);
+
+    show_comment_container.innerHTML = `
+      <div class="show_comment_title">
+      ${res.title}
+      </div>
+      <div class="country-city-author">
+      ${res.city}, ${res.country} / by. ${res.authorID.username}
+      </div>
+      <div class="likes-comments">
+        <div class="likesLogo">
+          <img src="../assets/like.svg" alt="">
+          <p>${res.likes} Likes</p>
+        </div>
+        <div class="commentsLogo" id="commentBtnPost">
+          <img src="../assets/comment.svg" alt="">
+          <p>${res.commentIDs.length} Comments</p>
+        </div>
+      </div>
+    `;
+
+    showComment.classList.add("showCommentActive");
+
+    res.commentIDs.forEach((element) => {
+      var day = new Date(element.date).getDate();
+      var month = new Date(element.date).getMonth();
+      var year = new Date(element.date).getFullYear();
+
+      show_comment_container.innerHTML += `
+      <div class="show_comment_content">
+        <img src="../assets/profile-picture-blank.svg" alt="">
+        <div class="show_comment_text">
+          <div class="comment-title">
+            <span>${element.authorID.username}</span>
+            <span>${day}/${month + 1}/${year}</span>
+          </div>
+          <div class="comment-body">
+            ${element.content}
+          </div>
+        </div>
+      </div>
+      `;
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 backBtnComment.addEventListener("click", () => {
   showComment.classList.remove("showCommentActive");
+});
+
+commentForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  var commentBody = commentFormBody.value;
+  var postid = commentBtnPost.dataset.id;
+  try {
+    const res = await fetch("/comment/api/", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        content: commentBody,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => res.msg);
+    console.log(res);
+
+    const res2 = await fetch("/post/api/" + postid, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        commentID: res._id,
+      }),
+    }).then((res) => res.json());
+
+    await renderComments(postid);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 textSearchDest.addEventListener("keyup", () => {

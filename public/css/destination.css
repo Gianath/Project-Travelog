@@ -305,6 +305,10 @@ main>.content {
   color: var(--dark);
 }
 
+.show_comment_content:last-child {
+  margin-bottom: 8%;
+}
+
 .show_comment_content>img {
   height: 60%;
   margin: 0 3%;
@@ -322,4 +326,49 @@ main>.content {
   font-size: 0.8rem;
   color: #131C3D;
   opacity: 30%;
+}
+
+.showComment>div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.commentInputBox {
+  position: absolute;
+  height: 8%;
+  width: 100%;
+  bottom: 0;
+  border: black solid 2px;
+  background-color: white;
+}
+
+.commentInputBox>div {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.commentInputBox>div>form {
+  width: 100%;
+  height: 100%;
+}
+
+.commentInputBox>div input {
+  height: 100%;
+  width: 97%;
+  margin-left: 3%;
+  outline: none;
+  border: none;
+}
+
+.commentInputBox>div img {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 1%;
+}
+
+.commentInputBox>div button {
+  cursor: pointer;
 }
