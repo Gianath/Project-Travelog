@@ -4,13 +4,15 @@ const createComment = async (req, res) => {
   const { content } = req.body;
   const userID = req.userID;
 
-  const resp = await commentModel.create({
-    authorID: userID,
-    content: content,
-    date: date,
-  });
-
-  res.json({ status: "success", msg: resp });
+  try {
+    const resp = await commentModel.create({
+      authorID: userID,
+      content: content,
+    });
+    res.json({ status: "success", msg: resp });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 module.exports = { createComment };
