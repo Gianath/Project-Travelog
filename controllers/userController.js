@@ -4,6 +4,9 @@ const jwt = require("jsonwebtoken");
 // User Model
 const userModel = require("../models/user");
 
+// Post Model
+const postModel = require("../models/post");
+
 const getCurrentUser = async (req, res) => {
   const { username, email, bio, postCreated, postLiked } =
     await userModel.findOne({
@@ -120,10 +123,78 @@ const checkCredentials = async (req, res) => {
   }
 };
 
+const checkLike = async (req, res) => {
+  try {
+    const { postID } = req.body;
+    const userID = req.userID;
+    const resp = await userModel.find({
+      _id: userID,
+      likedPostID: postID,
+    });
+    res.json({ status: "success", results: resp });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const updateLike = async (req, res) => {
+  try {
+    const { postID } = req.body;
+    const userID = req.userID;
+    var resp = await userModel.findOneAndUpdate(
+      {
+        _id: userID,
+        likedPostID: { $ne: postID },
+      },
+      {
+        $inc: { postLiked: 1 },
+        $push: { likedPostID: postID },
+      }
+    );
+
+    if (resp == null) {
+      var resp = await userModel.findOneAndUpdate(
+        {
+          _id: userID,
+          likedPostID: postID,
+        },
+        {
+          $inc: { postLiked: -1 },
+          $pull: { likedPostID: postID },
+        }
+      );
+
+      var resp2 = await postModel.findOneAndUpdate(
+        {
+          _id: postID,
+        },
+        {
+          $inc: { likes: -1 },
+        }
+      );
+    } else {
+      var resp2 = await postModel.findOneAndUpdate(
+        {
+          _id: postID,
+        },
+        {
+          $inc: { likes: 1 },
+        }
+      );
+    }
+
+    res.json({ status: "success", results: [resp, resp2] });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   registerUser,
   checkCredentials,
   getCurrentUser,
   updateUserProfile,
   logoutCurrentUser,
+  checkLike,
+  updateLike,
 };

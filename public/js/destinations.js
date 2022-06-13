@@ -9,6 +9,8 @@ const show_comment_container = document.getElementById(
 const showComment = document.getElementById("showComment");
 const backBtnPost = document.getElementById("backBtnPost");
 var commentBtnPost;
+var likeBtnPost;
+var likeBtnComment;
 const backBtnComment = document.getElementById("backBtnComment");
 const commentForm = document.getElementById("commentForm");
 const commentFormBody = document.getElementById("commentFormBody");
@@ -111,40 +113,7 @@ postContainer.addEventListener("click", async (e) => {
   }
 
   if (postID) {
-    try {
-      show_post_container.innerHTML = "";
-
-      var res = await fetch(`/post/api/${postID}`)
-        .then((res) => res.json())
-        .then((res) => res.results);
-
-      show_post_container.innerHTML = `
-      <div class="show_post_title">
-        ${res.title}
-      </div>
-      <div class="country-city-author">
-        ${res.city}, ${res.country} / by. ${res.authorID.username}
-      </div>
-      <div class="likes-comments">
-        <div class="likesLogo">
-          <img src="../assets/like.svg" alt="">
-          <p>${res.likes} Likes</p>
-        </div>
-        <div class="commentsLogo" id="commentBtnPost" data-id="${res._id}">
-          <img src="../assets/comment.svg" alt="">
-          <p>${res.commentIDs.length} Comments</p>
-        </div>
-      </div>
-      <div class="post_content">
-        ${res.content}
-      </div>
-      `;
-      showPost.classList.add("showPostActive");
-      commentBtnPost = document.getElementById("commentBtnPost");
-      createListenerCommentBtn();
-    } catch (error) {
-      console.log(error);
-    }
+    await renderPost(postID);
   }
 });
 
@@ -168,9 +137,128 @@ function createListenerCommentBtn() {
   });
 }
 
+function createListenerLikeBtnPost() {
+  likeBtnPost.addEventListener("click", async () => {
+    var id = likeBtnPost.dataset.id;
+    try {
+      const res = await fetch("/user/api/like", {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          postID: id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => res.results);
+
+      await renderPost(id);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}
+
+function createListenerLikeBtnComment() {
+  likeBtnComment.addEventListener("click", async () => {
+    var id = likeBtnComment.dataset.id;
+    try {
+      const res = await fetch("/user/api/like", {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          postID: id,
+        }),
+      })
+        .then((res) => res.json())
+        .then((res) => res.results);
+
+      await renderComments(id);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+}
+
+async function renderPost(postID) {
+  try {
+    var likeIconPath = "../assets/like.svg";
+    show_post_container.innerHTML = "";
+
+    var like = await fetch("/user/api/like", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        postID,
+      }),
+    })
+      .then((like) => like.json())
+      .then((like) => like.results);
+
+    if (like.length == 1) {
+      likeIconPath = "../assets/likeRed.svg";
+    }
+
+    var res = await fetch(`/post/api/${postID}`)
+      .then((res) => res.json())
+      .then((res) => res.results);
+
+    show_post_container.innerHTML = `
+    <div class="show_post_title">
+      ${res.title}
+    </div>
+    <div class="country-city-author">
+      ${res.city}, ${res.country} / by. ${res.authorID.username}
+    </div>
+    <div class="likes-comments">
+      <div class="likesLogo" id="likeBtnPost" data-id="${res._id}">
+        <img src="${likeIconPath}" id="likeBtnImgPost" alt="">
+        <p>${res.likes} Likes</p>
+      </div>
+      <div class="commentsLogo" id="commentBtnPost" data-id="${res._id}">
+        <img src="../assets/comment.svg" alt="">
+        <p>${res.commentIDs.length} Comments</p>
+      </div>
+    </div>
+    <div class="post_content">
+      ${res.content}
+    </div>
+    `;
+    showPost.classList.add("showPostActive");
+    commentBtnPost = document.getElementById("commentBtnPost");
+    likeBtnPost = document.getElementById("likeBtnPost");
+    createListenerCommentBtn();
+    createListenerLikeBtnPost();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function renderComments(postID) {
   try {
+    var likeIconPath = "../assets/like.svg";
     show_comment_container.innerHTML = "";
+
+    var like = await fetch("/user/api/like", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        postID,
+      }),
+    })
+      .then((like) => like.json())
+      .then((like) => like.results);
+
+    if (like.length == 1) {
+      likeIconPath = "../assets/likeRed.svg";
+    }
 
     var res = await fetch(`/post/api/${postID}`)
       .then((res) => res.json())
@@ -184,11 +272,11 @@ async function renderComments(postID) {
       ${res.city}, ${res.country} / by. ${res.authorID.username}
       </div>
       <div class="likes-comments">
-        <div class="likesLogo">
-          <img src="../assets/like.svg" alt="">
+        <div class="likesLogo" id="likeBtnComment" data-id="${res._id}">
+          <img src="${likeIconPath}" alt="">
           <p>${res.likes} Likes</p>
         </div>
-        <div class="commentsLogo" id="commentBtnPost">
+        <div class="commentsLogo" id="commentBtnComment">
           <img src="../assets/comment.svg" alt="">
           <p>${res.commentIDs.length} Comments</p>
         </div>
@@ -217,13 +305,18 @@ async function renderComments(postID) {
       </div>
       `;
     });
+
+    likeBtnComment = document.getElementById("likeBtnComment");
+    createListenerLikeBtnComment();
   } catch (error) {
     console.log(error);
   }
 }
 
-backBtnComment.addEventListener("click", () => {
+backBtnComment.addEventListener("click", async () => {
+  var id = likeBtnComment.dataset.id;
   showComment.classList.remove("showCommentActive");
+  await renderPost(id);
 });
 
 commentForm.addEventListener("submit", async (e) => {

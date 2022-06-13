@@ -11,7 +11,7 @@ const createPost = async (req, res) => {
       country: country,
     });
 
-    res.json({ status: "success", msg: resp });
+    res.json({ status: "success", results: resp });
   } catch (error) {
     console.log(error);
   }
