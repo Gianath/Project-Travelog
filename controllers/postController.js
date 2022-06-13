@@ -2,7 +2,7 @@ const postModel = require("../models/post");
 
 const createPost = async (req, res) => {
   try {
-    const { title, content, country, date } = req.body;
+    const { title, content, country } = req.body;
     const userID = req.userID;
     const resp = await postModel.create({
       authorID: userID,
