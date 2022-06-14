@@ -283,7 +283,8 @@ main>.content {
   white-space: nowrap;
 }
 
-.commentsLogo {
+.commentsLogo,
+.likesLogo {
   cursor: pointer;
 }
 
