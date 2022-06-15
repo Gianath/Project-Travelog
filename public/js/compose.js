@@ -117,6 +117,18 @@ form.addEventListener("submit", async (e) => {
   let postTitle = title.value,
     postBody = editor.root.innerHTML,
     chosenCountry = document.querySelector("#active");
+  if (!postTitle) {
+    alert("Please add a title");
+    return;
+  }
+  if (!postBody) {
+    alert("Please add body of the post");
+    return;
+  }
+  if (!chosenCountry) {
+    alert("Please choose a city");
+    return;
+  }
   var res = await fetch("/post/api/", {
     method: "POST",
     headers: {
@@ -131,5 +143,5 @@ form.addEventListener("submit", async (e) => {
   });
   title.value = "";
   postBody = editor.root.innerHTML = "";
-  alert("successfully posted");
+  alert("Successfully posted");
 });
