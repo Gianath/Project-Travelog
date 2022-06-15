@@ -18,6 +18,10 @@ const getDestinationPage = async (req, res) => {
   );
 };
 
+const getComposePage = async (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "html", "compose.html"));
+};
+
 const getHomePage = async (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "html", "index.html"));
 };
@@ -27,5 +31,6 @@ module.exports = {
   getRegisterPage,
   getDashboardPage,
   getDestinationPage,
+  getComposePage,
   getHomePage,
 };
