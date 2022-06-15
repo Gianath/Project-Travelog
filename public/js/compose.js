@@ -2,11 +2,11 @@
 const searchBar = document.getElementById("search_bar"),
   searchList = document.getElementById("search_list");
 
-// Available Countries/Regions List
-const countries = [
+// Available city/Regions List
+const city = [
   "Kuala Lumpur",
   "Bali",
-  "Indonesia",
+  "Jakarta",
   "Lampung",
   "Bangkok",
   "Yogyakarta",
@@ -14,11 +14,22 @@ const countries = [
   "Beijing",
 ];
 
+const country = {
+  "Kuala Lumpur": "Malaysia",
+  Bali: "Indonesia",
+  Jakarta: "Indonesia",
+  Lampung: "Indonesia",
+  Bangkok: "Thailand",
+  Yogyakarta: "Indonesia",
+  Manila: "Philippines",
+  Beijing: "China",
+};
+
 let searchRes = [],
   regChosen = false;
 
 window.onload = () => {
-  loadDestination(countries);
+  loadDestination(city);
   regionEventListener();
 };
 
@@ -55,7 +66,7 @@ searchBar.addEventListener("keyup", () => {
   let searchFilter = (reg) => {
     return reg.toLowerCase().indexOf(searchVal.toLowerCase()) !== -1;
   };
-  searchRes = countries.filter(searchFilter);
+  searchRes = city.filter(searchFilter);
   loadDestination(searchRes);
 });
 
@@ -78,11 +89,25 @@ const form = document.getElementById("post-form"),
   title = document.getElementById("title"),
   text = document.getElementById("editor");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
   let postTitle = title.value,
-    postBody = editor.getContents(),
+    postBody = editor.root.innerHTML,
     chosenCountry = document.querySelector("#active");
 
-  console.log(postTitle, postBody, chosenCountry.getAttribute("data-region"));
-  e.preventDefault();
+  var res = await fetch("/post/api/", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      title: postTitle,
+      content: postBody,
+      country: country[chosenCountry.getAttribute("data-region")],
+      city: chosenCountry.getAttribute("data-region"),
+    }),
+  });
+  title.value = "";
+  postBody = editor.root.innerHTML = "";
+  alert("successfully posted");
 });
