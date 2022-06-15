@@ -1,12 +1,14 @@
 // Search Bars
 const searchBar = document.getElementById("search_bar"),
-  searchList = document.getElementById("search_list");
+  searchList = document.getElementById("search_list"),
+  username = document.getElementById("profile__text__greet__name"),
+  logoutBtn = document.getElementById("profile__text__logout");
 
-// Available Countries/Regions List
-const countries = [
+// Available city/Regions List
+const city = [
   "Kuala Lumpur",
   "Bali",
-  "Indonesia",
+  "Jakarta",
   "Lampung",
   "Bangkok",
   "Yogyakarta",
@@ -14,13 +16,45 @@ const countries = [
   "Beijing",
 ];
 
+const country = {
+  "Kuala Lumpur": "Malaysia",
+  Bali: "Indonesia",
+  Jakarta: "Indonesia",
+  Lampung: "Indonesia",
+  Bangkok: "Thailand",
+  Yogyakarta: "Indonesia",
+  Manila: "Philippines",
+  Beijing: "China",
+};
+
 let searchRes = [],
   regChosen = false;
 
-window.onload = () => {
-  loadDestination(countries);
+window.onload = async () => {
+  loadDestination(city);
   regionEventListener();
+
+  try {
+    var res = await fetch("/user/api").then((res) => res.json());
+    if (res.status === "failed") {
+      alert("Please login first");
+      window.location.href = "/login";
+      return;
+    }
+    username.innerHTML = res.username;
+  } catch (error) {}
 };
+
+logoutBtn.addEventListener("click", async () => {
+  const res = await fetch("/user/api/logout", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  alert("You have been succesfully logged out");
+  window.location.href = "/login";
+});
 
 // Load regions to DOM
 function loadDestination(regList) {
@@ -55,7 +89,7 @@ searchBar.addEventListener("keyup", () => {
   let searchFilter = (reg) => {
     return reg.toLowerCase().indexOf(searchVal.toLowerCase()) !== -1;
   };
-  searchRes = countries.filter(searchFilter);
+  searchRes = city.filter(searchFilter);
   loadDestination(searchRes);
 });
 
@@ -78,11 +112,36 @@ const form = document.getElementById("post-form"),
   title = document.getElementById("title"),
   text = document.getElementById("editor");
 
-form.addEventListener("submit", (e) => {
-  let postTitle = title.value,
-    postBody = editor.getContents(),
-    chosenCountry = document.querySelector("#active");
-
-  console.log(postTitle, postBody, chosenCountry.getAttribute("data-region"));
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
+  let postTitle = title.value,
+    postBody = editor.root.innerHTML,
+    chosenCountry = document.querySelector("#active");
+  if (!postTitle) {
+    alert("Please add a title");
+    return;
+  }
+  if (!postBody) {
+    alert("Please add body of the post");
+    return;
+  }
+  if (!chosenCountry) {
+    alert("Please choose a city");
+    return;
+  }
+  var res = await fetch("/post/api/", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      title: postTitle,
+      content: postBody,
+      country: country[chosenCountry.getAttribute("data-region")],
+      city: chosenCountry.getAttribute("data-region"),
+    }),
+  });
+  title.value = "";
+  postBody = editor.root.innerHTML = "";
+  alert("Successfully posted");
 });

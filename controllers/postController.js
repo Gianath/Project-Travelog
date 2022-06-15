@@ -2,12 +2,13 @@ const postModel = require("../models/post");
 
 const createPost = async (req, res) => {
   try {
-    const { title, content, country } = req.body;
+    const { title, content, city, country } = req.body;
     const userID = req.userID;
     const resp = await postModel.create({
       authorID: userID,
       title: title,
       content: content,
+      city: city,
       country: country,
     });
 
@@ -45,6 +46,7 @@ const getPostByView = async (req, res) => {
     const result = await postModel
       .find()
       .sort({ views: "desc" })
+      .limit(2)
       .populate("authorID");
     res.json({ status: "success", results: result });
   } catch (error) {
@@ -58,6 +60,7 @@ const getPostByLike = async (req, res) => {
     const result = await postModel
       .find()
       .sort({ likes: "desc" })
+      .limit(2)
       .populate("authorID");
     res.json({ status: "success", results: result });
   } catch (error) {

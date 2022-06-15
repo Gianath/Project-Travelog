@@ -25,11 +25,6 @@ app.use("/user", users);
 app.use("/post", posts);
 app.use("/comment", comments);
 
-// Homepage (Nanti)
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/html/index.html"));
-});
-
 const port = process.env.PORT || 5000;
 
 const start = async () => {
