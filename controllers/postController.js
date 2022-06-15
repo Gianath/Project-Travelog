@@ -45,6 +45,7 @@ const getPostByView = async (req, res) => {
     const result = await postModel
       .find()
       .sort({ views: "desc" })
+      .limit(2)
       .populate("authorID");
     res.json({ status: "success", results: result });
   } catch (error) {
@@ -58,6 +59,7 @@ const getPostByLike = async (req, res) => {
     const result = await postModel
       .find()
       .sort({ likes: "desc" })
+      .limit(2)
       .populate("authorID");
     res.json({ status: "success", results: result });
   } catch (error) {
