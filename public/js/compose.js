@@ -1,6 +1,8 @@
 // Search Bars
 const searchBar = document.getElementById("search_bar"),
-  searchList = document.getElementById("search_list");
+  searchList = document.getElementById("search_list"),
+  username = document.getElementById("profile__text__greet__name"),
+  logoutBtn = document.getElementById("profile__text__logout");
 
 // Available city/Regions List
 const city = [
@@ -28,10 +30,31 @@ const country = {
 let searchRes = [],
   regChosen = false;
 
-window.onload = () => {
+window.onload = async () => {
   loadDestination(city);
   regionEventListener();
+
+  try {
+    var res = await fetch("/user/api").then((res) => res.json());
+    if (res.status === "failed") {
+      alert("Please login first");
+      window.location.href = "/login";
+      return;
+    }
+    username.innerHTML = res.username;
+  } catch (error) {}
 };
+
+logoutBtn.addEventListener("click", async () => {
+  const res = await fetch("/user/api/logout", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  alert("You have been succesfully logged out");
+  window.location.href = "/login";
+});
 
 // Load regions to DOM
 function loadDestination(regList) {
@@ -94,7 +117,6 @@ form.addEventListener("submit", async (e) => {
   let postTitle = title.value,
     postBody = editor.root.innerHTML,
     chosenCountry = document.querySelector("#active");
-
   var res = await fetch("/post/api/", {
     method: "POST",
     headers: {
