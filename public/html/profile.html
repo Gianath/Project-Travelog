@@ -49,7 +49,7 @@
       </div>
     </header>
     <section class="profile-desc">
-      <img src="../assets/edit.svg" alt="" class="profile-desc__edit" />
+      <img src="../assets/edit.svg" alt="" class="profile-desc__edit" id="profile-desc__edit" />
       <div class="profile-desc__data">
         <div class="profile-desc__identity">
           <img src="../assets/profile-picture.svg" alt="Profile Picture" class="profile-desc__identity__picture" />
@@ -59,11 +59,7 @@
         </div>
         <div class="profile-desc__bio__container">
           <h3 class="profile-desc__bio__title">Bio</h3>
-          <p class="profile-desc__bio" id="bio">
-            Hello there my name is Adrian Hartanto, and I love travelling to
-            different places and experiencing different cultures all around
-            the world. I am currently a college student living in Indonesia.
-          </p>
+          <p class="profile-desc__bio" id="bio"></p>
         </div>
         <div class="profile-desc__badges__container">
           <h3 class="profile-desc__badges__title">Badges</h3>
@@ -93,7 +89,31 @@
       </div>
     </section>
   </main>
-  <div class="edit-profile"></div>
+  <div class="edit-profile" id="edit-profile">
+    <div class="edit-profile__container">
+      <img src="../assets/close.svg" alt="" class="edit-profile__close" id="close-edit">
+      <h2 class="edit-profile__title">Edit Profile</h2>
+      <form action="" id="form-edit" class="edit-profile__form">
+        <div class="edit-profile__field__container edit-profile__username">
+          <label for="username" class="edit-profile__label">Username</label>
+          <input type="text" name="username" id="username-edit" class="edit-profile__field">
+        </div>
+        <div class="edit-profile__field__container edit-profile__email">
+          <label for="email" class="edit-profile__label">Email</label>
+          <input type="email" name="email" id="email-edit" class="edit-profile__field">
+        </div>
+        <div class="edit-profile__field__container  edit-profile__password">
+          <label for="password" class="edit-profile__label">Password</label>
+          <input type="password" name="password" id="password-edit" class="edit-profile__field">
+        </div>
+        <div class="edit-profile__field__container edit-profile__bio">
+          <label for="bio" class="edit-profile__label">Bio</label>
+          <textarea name="bio" id="bio-edit" class="edit-profile__field edit-profile__field--bio"></textarea>
+        </div>
+        <input type="submit" class="edit-profile__submit" id="submit-edit" value="Save">
+      </form>
+    </div>
+  </div>
 </body>
 <script src="../js/profile.js"></script>
 
