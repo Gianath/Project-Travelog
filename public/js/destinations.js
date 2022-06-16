@@ -26,6 +26,7 @@ const regions = [
   "Yogyakarta",
   "Manila",
   "Beijing",
+  "Singapore",
 ];
 
 var searchResult = regions;
