@@ -1,4 +1,5 @@
-const loginForm = document.getElementById("login-form");
+const loginForm = document.getElementById("login-form"),
+  passwordField = document.getElementById("Password");
 
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -18,5 +19,9 @@ loginForm.addEventListener("submit", async (e) => {
 
   if (res.status === "success") {
     window.location.href = "/dashboard";
+  } else {
+    passwordField.value = "";
+    passwordField.setAttribute("placeholder", "Incorrect Password");
+    passwordField.style.border = "2px solid red";
   }
 });

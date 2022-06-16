@@ -26,6 +26,10 @@ const getHomePage = async (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "html", "index.html"));
 };
 
+const getProfilePage = async (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "html", "profile.html"));
+};
+
 module.exports = {
   getLoginPage,
   getRegisterPage,
@@ -33,4 +37,5 @@ module.exports = {
   getDestinationPage,
   getComposePage,
   getHomePage,
+  getProfilePage,
 };
