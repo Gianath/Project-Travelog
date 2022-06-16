@@ -20,13 +20,17 @@ const logoutBtn = document.getElementById("logoutBtn");
 const regions = [
   "Kuala Lumpur",
   "Bali",
-  "Indonesia",
+  "Jakarta",
   "Lampung",
   "Bangkok",
   "Yogyakarta",
   "Manila",
   "Beijing",
+  "Singapore",
 ];
+
+const params = window.location.search;
+const dest = new URLSearchParams(params).get("dest");
 
 var searchResult = regions;
 
@@ -40,6 +44,10 @@ window.onload = async () => {
       return;
     }
     userprofile.innerHTML = res.username;
+
+    if (dest) {
+      showPopularDest(dest);
+    }
   } catch (error) {}
 };
 
@@ -76,29 +84,8 @@ destinationContainer.addEventListener("click", async (e) => {
   if (city) {
     showPost.classList.remove("showPostActive");
     showComment.classList.remove("showCommentActive");
-    try {
-      postContainer.innerHTML = "";
-      var res = await fetch(`/post/api?city=${city}`)
-        .then((res) => res.json())
-        .then((res) => res.results);
 
-      for (var element of res) {
-        var Difference_In_Time = new Date() - new Date(element.date).getTime();
-
-        var Difference_In_Days = parseInt(
-          Difference_In_Time / (1000 * 3600 * 24)
-        );
-
-        var totalDays =
-          Difference_In_Days > 0 ? Difference_In_Days + "d" : "Today";
-
-        postContainer.innerHTML += `          
-        <div class="subCont" data-id="${element._id}">
-          <h3 class="subCont-title">${element.title}</h3>
-          <h5 class="subCont-title2">by : ${element.authorID.username} / ${totalDays} ago</h5>
-        </div>`;
-      }
-    } catch (error) {}
+    showAllPost(city);
   }
 });
 
@@ -120,6 +107,12 @@ postContainer.addEventListener("click", async (e) => {
 backBtnPost.addEventListener("click", () => {
   showPost.classList.remove("showPostActive");
 });
+
+function showPopularDest(dest) {
+  const destination = document.querySelector('[data-region="' + dest + '"]');
+  destination.classList.add("activeRegion");
+  showAllPost(dest);
+}
 
 function createListenerCommentBtn() {
   commentBtnPost.addEventListener("click", async (e) => {
@@ -313,6 +306,32 @@ async function renderComments(postID) {
   }
 }
 
+async function showAllPost(city) {
+  try {
+    postContainer.innerHTML = "";
+    var res = await fetch(`/post/api?city=${city}`)
+      .then((res) => res.json())
+      .then((res) => res.results);
+
+    for (var element of res) {
+      var Difference_In_Time = new Date() - new Date(element.date).getTime();
+
+      var Difference_In_Days = parseInt(
+        Difference_In_Time / (1000 * 3600 * 24)
+      );
+
+      var totalDays =
+        Difference_In_Days > 0 ? Difference_In_Days + "d" : "Today";
+
+      postContainer.innerHTML += `          
+      <div class="subCont" data-id="${element._id}">
+        <h3 class="subCont-title">${element.title}</h3>
+        <h5 class="subCont-title2">by : ${element.authorID.username} / ${totalDays} ago</h5>
+      </div>`;
+    }
+  } catch (error) {}
+}
+
 backBtnComment.addEventListener("click", async () => {
   var id = likeBtnComment.dataset.id;
   showComment.classList.remove("showCommentActive");
@@ -350,6 +369,7 @@ commentForm.addEventListener("submit", async (e) => {
   } catch (error) {
     console.log(error);
   }
+  commentFormBody.value = "";
 });
 
 textSearchDest.addEventListener("keyup", () => {

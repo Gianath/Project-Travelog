@@ -14,6 +14,7 @@ const city = [
   "Yogyakarta",
   "Manila",
   "Beijing",
+  "Singapore",
 ];
 
 const country = {
@@ -25,6 +26,7 @@ const country = {
   Yogyakarta: "Indonesia",
   Manila: "Philippines",
   Beijing: "China",
+  Singapore: "Singapore",
 };
 
 let searchRes = [],
