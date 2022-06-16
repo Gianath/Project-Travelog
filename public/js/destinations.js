@@ -20,7 +20,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 const regions = [
   "Kuala Lumpur",
   "Bali",
-  "Indonesia",
+  "Jakarta",
   "Lampung",
   "Bangkok",
   "Yogyakarta",
