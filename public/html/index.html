@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
-  </head>
-  <body>
-    This is the homepage
-    <img src="../../assets/Logo-light.svg" alt="" />
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travelog - Homepage</title>
+
+  <!-- Font Links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="../css/homepage.css" />
+</head>
+
+<body>
+  <nav>
+    <img src="../assets/SideBar Icon/Travelog.svg" alt="Travelog Logo" class="logo" />
+    <ul class="nav-links">
+      <li>
+        <a href="/dashboard"><img src="../assets/SideBar Icon/home.svg" alt="home button" /></a>
+      </li>
+      <li>
+        <a href="/destination"><img src="../assets/SideBar Icon/locations.svg" alt="destinations button" /></a>
+      </li>
+      <li>
+        <a href="/profile"><img src="../assets/SideBar Icon/profile.svg" alt="profile button" /></a>
+      </li>
+      <li>
+        <a href="/compose"><img src="../assets/SideBar Icon/compose.svg" alt="compose button" /></a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Header -->
+    <header>
+      <h1>Travelog</h1>
+      <div class="profile">
+        <div class="profile__text">
+          <p class="profile__text__greet">
+            Hi,
+            <span class="profile__text__greet__name" id="profile__text__greet__name">User</span>
+          </p>
+          <a class="profile__text__logout" id="profile__text__logout" href="#">logout</a>
+        </div>
+        <img src="../assets/profile-picture.svg" alt="profile picture" class="profile__picture" />
+      </div>
+    </header>
+    <section class="bottom-left"></section>
+    <section class="bottom-right"></section>
+  </main>
+  <div class="login-overlay">
+    <p class="login-overlay__alert">You haven't logged in!</p>
+    <p class="login-overlay__subtext">Login here!</p>
+    <a href="/login" class="login-overlay__button">Login</a>
+  </div>
+</body>
+<script src="../js/homepage.js"></script>
+
 </html>
