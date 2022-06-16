@@ -1,111 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/destination.css" />
+    <title>Travelog - Destinations</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../css/destination.css">
-  <title>Travelog</title>
-</head>
-
-<body>
-  <nav>
-    <div class="sidebar">
-      <img class="sidebar__logo" src="../assets/SideBar Icon/Travelog.svg">
-      <div class="sidebar-icon">
-        <a href="/dashboard">
-          <img class="homeIcon" src="../assets/SideBar Icon/home.svg">
-        </a>
-        <a href="/destination">
-          <img class="locIcon" src="../assets/SideBar Icon/locations.svg">
-        </a>
-        <a href="">
-          <img class="profileIcon" src="../assets/SideBar Icon/profile.svg">
-        </a>
-        <a href="/compose">
-          <img class="composeIcon" src="../assets/SideBar Icon/compose.svg">
-        </a>
+  <body>
+    <nav>
+      <div class="sidebar">
+        <img class="sidebar__logo" src="../assets/SideBar Icon/Travelog.svg" />
+        <div class="sidebar-icon">
+          <a href="/dashboard">
+            <img class="homeIcon" src="../assets/SideBar Icon/home.svg" />
+          </a>
+          <a href="/destination">
+            <img class="locIcon" src="../assets/SideBar Icon/locations.svg" />
+          </a>
+          <a href="">
+            <img class="profileIcon" src="../assets/SideBar Icon/profile.svg" />
+          </a>
+          <a href="/compose">
+            <img class="composeIcon" src="../assets/SideBar Icon/compose.svg" />
+          </a>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <main>
-    <header>
-      <div class="title">Travelog</div>
-      <div class="profile">
-        <div class="profile_detail">
-          <p><span>Hi, </span><span id="username">Placeholder</span></p>
-          <p id="logoutBtn">Logout</p>
+    <main>
+      <header>
+        <div class="title">Travelog</div>
+        <div class="profile">
+          <div class="profile_detail">
+            <p><span>Hi, </span><span id="username">Placeholder</span></p>
+            <p id="logoutBtn">Logout</p>
+          </div>
+          <div class="profile_img">
+            <img src="../assets/profile-picture.svg" />
+          </div>
         </div>
-        <div class="profile_img"><img src="../assets/profile-picture.svg"></div>
-      </div>
-    </header>
+      </header>
 
-    <div class="content">
-      <section class="left-container">
-        <div class="top-destination-title">
-          Top Destinations
-        </div>
-        <div class="searchDest">
-          <input type="text" id="textSearchDest" placeholder="Search Destination">
-        </div>
-        <div class="destinations" id="destinationsContainer">
-          <div class="regContainer">
-            <h3 class="region">Kuala Lumpur</h3>
+      <div class="content">
+        <section class="left-container">
+          <div class="top-destination-title">Top Destinations</div>
+          <div class="searchDest">
+            <input
+              type="text"
+              id="textSearchDest"
+              placeholder="Search Destination"
+            />
           </div>
-          <div class="regContainer">
-            <h3 class="region">Bali</h3>
+          <div class="destinations" id="destinationsContainer">
+            <div class="regContainer">
+              <h3 class="region">Kuala Lumpur</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Bali</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Indonesia</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Lampung</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Bangkok</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Yogyakarta</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Manila</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Beijing</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Kuala Lumpur</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Bali</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Indonesia</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Lampung</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Bangkok</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Yogyakarta</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Manila</h3>
+            </div>
+            <div class="regContainer">
+              <h3 class="region">Beijing</h3>
+            </div>
           </div>
-          <div class="regContainer">
-            <h3 class="region">Indonesia</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Lampung</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Bangkok</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Yogyakarta</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Manila</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Beijing</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Kuala Lumpur</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Bali</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Indonesia</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Lampung</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Bangkok</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Yogyakarta</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Manila</h3>
-          </div>
-          <div class="regContainer">
-            <h3 class="region">Beijing</h3>
-          </div>
-        </div>
-      </section>
-      <section class="right-container">
-        <div class="postList">
-          <div class="post-title">Posts</div>
-          <div class="posts__container" id="posts__container">
-            <!--
+        </section>
+        <section class="right-container">
+          <div class="postList">
+            <div class="post-title">Posts</div>
+            <div class="posts__container" id="posts__container">
+              <!--
             <div class="subCont">
               <h3 class="subCont-title">My Experience in Kuala Lumpur</h3>
               <h5 class="subCont-title2">by : Reynard Julian / 3d ago</h5>
@@ -142,98 +145,105 @@
               <h3 class="subCont-title">My Experience in Kuala Lumpur</h3>
               <h5 class="subCont-title2">by : Reynard Julian / 3d ago</h5>
             </div> -->
+            </div>
           </div>
-        </div>
 
-        <div class="showPost" id="showPost">
-          <div class="show-post-title">
-            <img id="backBtnPost" src="../assets/back.svg" alt="">
-            <span>Destinations</span>
-          </div>
-          <div class="show_post_container" id="show_post_container">
-            <div class="show_post_title">
-              My Experience in Kuala Lumpur
-            </div>
-            <div class="country-city-author">
-              Kuala Lumpur, Malaysia / by. Reynard Julian
-            </div>
-            <div class="likes-comments">
-              <div class="likesLogo">
-                <img src="../assets/like.svg" alt="">
-                <p>1.3K Likes</p>
-              </div>
-              <div class="commentsLogo" id="commentBtnPost">
-                <img src="../assets/comment.svg" alt="">
-                <p>1.3K Comments</p>
-              </div>
-            </div>
-            <div class="post_content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel neque vitae velit eleifend laoreet.
-              Nunc cursus felis dapibus dignissim convallis. Cras finibus nec lectus sed efficitur. Class aptent taciti
-              sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus dapibus ex vitae turpis
-              volutpat aliquam. Suspendisse eu tincidunt libero, dapibus eleifend elit. Nullam at sapien vitae quam
-              sollicitudin efficitur. Aenean et tincidunt eros. Donec eu sagittis erat. Nullam dolor risus, ultricies
-              sed metus a, volutpat dapibus eros. Sed sed ipsum sit amet tortor ultricies gravida et id orci. Nam metus
-              nibh, dignissim congue finibus ut, lacinia vitae sapien. Donec ultricies varius tristique.
-            </div>
-          </div>
-        </div>
-
-        <div class="showComment" id="showComment">
-          <div>
-            <div class="show-comment-title">
-              <img id="backBtnComment" src="../assets/back.svg" alt="">
+          <div class="showPost" id="showPost">
+            <div class="show-post-title">
+              <img id="backBtnPost" src="../assets/back.svg" alt="" />
               <span>Destinations</span>
-              <span class="commentBack">&nbsp| Comments</span>
             </div>
-            <div class="show_comment_container" id="show_comment_container">
-              <div class="show_comment_title">
-                My Experience in Kuala Lumpur
-              </div>
+            <div class="show_post_container" id="show_post_container">
+              <div class="show_post_title">My Experience in Kuala Lumpur</div>
               <div class="country-city-author">
                 Kuala Lumpur, Malaysia / by. Reynard Julian
               </div>
               <div class="likes-comments">
                 <div class="likesLogo">
-                  <img src="../assets/like.svg" alt="">
+                  <img src="../assets/like.svg" alt="" />
                   <p>1.3K Likes</p>
                 </div>
                 <div class="commentsLogo" id="commentBtnPost">
-                  <img src="../assets/comment.svg" alt="">
+                  <img src="../assets/comment.svg" alt="" />
                   <p>1.3K Comments</p>
                 </div>
               </div>
-              <div class="show_comment_content">
-                <img src="../assets/profile-picture-blank.svg" alt="">
-                <div class="show_comment_text">
-                  <div class="comment-title">
-                    <span>Adrian Hartanto</span>
-                    <span>6/7/2022</span>
-                  </div>
-                  <div class="comment-body">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vel neque vitae velit eleifend
-                    laoreet.
-                    Nunc cursus felis dapibus dignissim convallis. Cras finibus nec lectus sed efficitur. Class aptent
-                    taciti sociosqu ad.
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="commentInputBox">
-              <div>
-                <form id="commentForm" action="" method="post">
-                  <input type="text" id="commentFormBody" placeholder="Comment">
-                  <button type="submit">
-                    <img src="../assets/enter.svg" alt="">
-                  </button>
-                </form>
+              <div class="post_content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                vel neque vitae velit eleifend laoreet. Nunc cursus felis
+                dapibus dignissim convallis. Cras finibus nec lectus sed
+                efficitur. Class aptent taciti sociosqu ad litora torquent per
+                conubia nostra, per inceptos himenaeos. Vivamus dapibus ex vitae
+                turpis volutpat aliquam. Suspendisse eu tincidunt libero,
+                dapibus eleifend elit. Nullam at sapien vitae quam sollicitudin
+                efficitur. Aenean et tincidunt eros. Donec eu sagittis erat.
+                Nullam dolor risus, ultricies sed metus a, volutpat dapibus
+                eros. Sed sed ipsum sit amet tortor ultricies gravida et id
+                orci. Nam metus nibh, dignissim congue finibus ut, lacinia vitae
+                sapien. Donec ultricies varius tristique.
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
 
-  </main>
-  <script src="../js/destinations.js"></script>
-</body>
+          <div class="showComment" id="showComment">
+            <div>
+              <div class="show-comment-title">
+                <img id="backBtnComment" src="../assets/back.svg" alt="" />
+                <span>Destinations</span>
+                <span class="commentBack">&nbsp| Comments</span>
+              </div>
+              <div class="show_comment_container" id="show_comment_container">
+                <div class="show_comment_title">
+                  My Experience in Kuala Lumpur
+                </div>
+                <div class="country-city-author">
+                  Kuala Lumpur, Malaysia / by. Reynard Julian
+                </div>
+                <div class="likes-comments">
+                  <div class="likesLogo">
+                    <img src="../assets/like.svg" alt="" />
+                    <p>1.3K Likes</p>
+                  </div>
+                  <div class="commentsLogo" id="commentBtnPost">
+                    <img src="../assets/comment.svg" alt="" />
+                    <p>1.3K Comments</p>
+                  </div>
+                </div>
+                <div class="show_comment_content">
+                  <img src="../assets/profile-picture-blank.svg" alt="" />
+                  <div class="show_comment_text">
+                    <div class="comment-title">
+                      <span>Adrian Hartanto</span>
+                      <span>6/7/2022</span>
+                    </div>
+                    <div class="comment-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Fusce vel neque vitae velit eleifend laoreet. Nunc cursus
+                      felis dapibus dignissim convallis. Cras finibus nec lectus
+                      sed efficitur. Class aptent taciti sociosqu ad.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="commentInputBox">
+                <div>
+                  <form id="commentForm" action="" method="post">
+                    <input
+                      type="text"
+                      id="commentFormBody"
+                      placeholder="Comment"
+                    />
+                    <button type="submit">
+                      <img src="../assets/enter.svg" alt="" />
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="../js/destinations.js"></script>
+  </body>
+</html>

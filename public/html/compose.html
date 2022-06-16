@@ -1,92 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travelog - Compose</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travelog - Compose</title>
+    <!-- Font Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Quil for text editor -->
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../css/compose.css" />
+  </head>
 
-  <!-- Font Links -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <body>
+    <nav>
+      <img
+        src="../assets/SideBar Icon/Travelog.svg"
+        alt="Travelog Logo"
+        class="logo"
+      />
+      <ul class="nav-links">
+        <li>
+          <a href="/dashboard"
+            ><img src="../assets/SideBar Icon/home.svg" alt="home button"
+          /></a>
+        </li>
+        <li>
+          <a href="/destination"
+            ><img
+              src="../assets/SideBar Icon/locations.svg"
+              alt="destinations button"
+          /></a>
+        </li>
+        <li>
+          <a href="#"
+            ><img src="../assets/SideBar Icon/profile.svg" alt="profile button"
+          /></a>
+        </li>
+        <li>
+          <a href="/compose"
+            ><img src="../assets/SideBar Icon/compose.svg" alt="compose button"
+          /></a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- Header -->
+      <header>
+        <h1>Travelog</h1>
+        <div class="profile">
+          <div class="profile__text">
+            <p class="profile__text__greet">
+              Hi,
+              <span
+                class="profile__text__greet__name"
+                id="profile__text__greet__name"
+                >Adrian Hartanto</span
+              >
+            </p>
+            <a class="profile__text__logout" id="profile__text__logout" href="#"
+              >logout</a
+            >
+          </div>
+          <img
+            src="../assets/profile-picture.svg"
+            alt="profile picture"
+            class="profile__picture"
+          />
+        </div>
+      </header>
+      <!-- Destination Selection -->
+      <section class="destinations">
+        <h2 class="destinations__title">Search Destinations</h2>
+
+        <div class="destinations__search__container">
+          <input
+            type="text"
+            class="destinations__search"
+            id="search_bar"
+            placeholder="Search Here!"
+          />
+          <img
+            src="../assets/search.svg"
+            alt=""
+            class="destinations__search__icon"
+          />
+        </div>
+
+        <div class="destinations__list" id="search_list"></div>
+      </section>
+      <!-- Post Editor -->
+      <section class="compose">
+        <form action="" id="post-form">
+          <input
+            type="text"
+            class="compose__title"
+            id="title"
+            placeholder="Title"
+          />
+          <div class="compose__toolbar" id="toolbar" style="border: none">
+            <button class="compose__toolbar__button ql-bold"></button>
+            <button class="compose__toolbar__button ql-italic"></button>
+            <button class="compose__toolbar__button ql-underline"></button>
+          </div>
+          <div class="compose__editor" id="editor" style="border: none">
+            <div class="ql-editor"></div>
+          </div>
+          <input type="submit" value="POST" class="compose__submit" />
+        </form>
+      </section>
+    </main>
+  </body>
   <!-- Quil for text editor -->
-  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
-  <!-- Link CSS -->
-  <link rel="stylesheet" href="../css/compose.css" />
-</head>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
-<body>
-  <nav>
-    <img src="../assets/SideBar Icon/Travelog.svg" alt="Travelog Logo" class="logo" />
-    <ul class="nav-links">
-      <li>
-        <a href="/dashboard"><img src="../assets/SideBar Icon/home.svg" alt="home button" /></a>
-      </li>
-      <li>
-        <a href="/destination"><img src="../assets/SideBar Icon/locations.svg" alt="destinations button" /></a>
-      </li>
-      <li>
-        <a href="#"><img src="../assets/SideBar Icon/profile.svg" alt="profile button" /></a>
-      </li>
-      <li>
-        <a href="/compose"><img src="../assets/SideBar Icon/compose.svg" alt="compose button" /></a>
-      </li>
-    </ul>
-  </nav>
-
-  <main>
-    <!-- Header -->
-    <header>
-      <h1>Travelog</h1>
-      <div class="profile">
-        <div class="profile__text">
-          <p class="profile__text__greet">
-            Hi,
-            <span class="profile__text__greet__name" id="profile__text__greet__name">Adrian Hartanto</span>
-          </p>
-          <a class="profile__text__logout" id="profile__text__logout" href="#">logout</a>
-        </div>
-        <img src="../assets/profile-picture.svg" alt="profile picture" class="profile__picture" />
-      </div>
-    </header>
-    <!-- Destination Selection -->
-    <section class="destinations">
-      <h2 class="destinations__title">Search Destinations</h2>
-
-      <div class="destinations__search__container">
-        <input type="text" class="destinations__search" id="search_bar" placeholder="Search Here!" />
-        <img src="../assets/search.svg" alt="" class="destinations__search__icon" />
-      </div>
-
-      <div class="destinations__list" id="search_list">
-        <div class="destinations__list__location">
-          <p>${reg}</p>
-        </div>
-      </div>
-    </section>
-    <!-- Post Editor -->
-    <section class="compose">
-      <form action="" id="post-form">
-        <input type="text" class="compose__title" id="title" placeholder="Title" />
-        <div class="compose__toolbar" id="toolbar" style="border: none">
-          <button class="compose__toolbar__button ql-bold"></button>
-          <button class="compose__toolbar__button ql-italic"></button>
-          <button class="compose__toolbar__button ql-underline"></button>
-        </div>
-        <div class="compose__editor" id="editor" style="border: none">
-          <div class="ql-editor"></div>
-        </div>
-        <input type="submit" value="POST" class="compose__submit" />
-      </form>
-    </section>
-  </main>
-</body>
-<!-- Quil for text editor -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-<!-- Link Javascript -->
-<script src="../js/compose.js"></script>
-
+  <!-- Link Javascript -->
+  <script src="../js/compose.js"></script>
 </html>
