@@ -1,128 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travelog - Profile</title>
-    <!-- Font Links -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Link CSS -->
-    <link rel="stylesheet" href="../css/profile.css" />
-  </head>
-  <body>
-    <nav>
-      <img
-        src="../assets/SideBar Icon/Travelog.svg"
-        alt="Travelog Logo"
-        class="logo"
-      />
-      <ul class="nav-links">
-        <li>
-          <a href="/dashboard"
-            ><img src="../assets/SideBar Icon/home.svg" alt="home button"
-          /></a>
-        </li>
-        <li>
-          <a href="/destination"
-            ><img
-              src="../assets/SideBar Icon/locations.svg"
-              alt="destinations button"
-          /></a>
-        </li>
-        <li>
-          <a href="#"
-            ><img src="../assets/SideBar Icon/profile.svg" alt="profile button"
-          /></a>
-        </li>
-        <li>
-          <a href="/compose"
-            ><img src="../assets/SideBar Icon/compose.svg" alt="compose button"
-          /></a>
-        </li>
-      </ul>
-    </nav>
 
-    <main>
-      <!-- Header -->
-      <header>
-        <h1>Travelog</h1>
-        <div class="profile">
-          <div class="profile__text">
-            <p class="profile__text__greet">
-              Hi,
-              <span
-                class="profile__text__greet__name"
-                id="profile__text__greet__name"
-                >Adrian Hartanto</span
-              >
-            </p>
-            <a class="profile__text__logout" id="profile__text__logout" href="#"
-              >logout</a
-            >
-          </div>
-          <img
-            src="../assets/profile-picture.svg"
-            alt="profile picture"
-            class="profile__picture"
-          />
-        </div>
-      </header>
-      <section class="profile-desc">
-        <img src="../assets/edit.svg" alt="" class="profile-desc__edit" />
-        <div class="profile-desc__data">
-          <div class="profile-desc__identity">
-            <img
-              src="../assets/profile-picture.svg"
-              alt="Profile Picture"
-              class="profile-desc__identity__picture"
-            />
-            <h2 class="profile-desc__identity__username" id="username">
-              Adrian Hartanto
-            </h2>
-          </div>
-          <div class="profile-desc__bio__container">
-            <h3 class="profile-desc__bio__title">Bio</h3>
-            <p class="profile-desc__bio" id="bio">
-              Hello there my name is Adrian Hartanto, and I love travelling to
-              different places and experiencing different cultures all around
-              the world. I am currently a college student living in Indonesia.
-            </p>
-          </div>
-          <div class="profile-desc__badges__container">
-            <h3 class="profile-desc__badges__title">Badges</h3>
-            <div class="profile-desc__badges" id="badges"></div>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travelog - Profile</title>
+  <!-- Font Links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="../css/profile.css" />
+</head>
 
-        <div class="profile-desc__stats">
-          <div class="profile-desc__stats__created">
-            <h3 class="profile-desc__stats__created__title">Posts Created</h3>
-            <p class="profile-desc__stats__created__num" id="created">0</p>
-          </div>
-          <div class="profile-desc__stats__liked">
-            <h3 class="profile-desc__stats__liked__title">Posts Liked</h3>
-            <p class="profile-desc__stats__liked__num" id="liked">2</p>
-          </div>
+<body>
+  <nav>
+    <img src="../assets/SideBar Icon/Travelog.svg" alt="Travelog Logo" class="logo" />
+    <ul class="nav-links">
+      <li>
+        <a href="/dashboard"><img src="../assets/SideBar Icon/home.svg" alt="home button" /></a>
+      </li>
+      <li>
+        <a href="/destination"><img src="../assets/SideBar Icon/locations.svg" alt="destinations button" /></a>
+      </li>
+      <li>
+        <a href="/profile"><img src="../assets/SideBar Icon/profile.svg" alt="profile button" /></a>
+      </li>
+      <li>
+        <a href="/compose"><img src="../assets/SideBar Icon/compose.svg" alt="compose button" /></a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Header -->
+    <header>
+      <h1>Travelog</h1>
+      <div class="profile">
+        <div class="profile__text">
+          <p class="profile__text__greet">
+            Hi,
+            <span class="profile__text__greet__name" id="profile__text__greet__name">Adrian Hartanto</span>
+          </p>
+          <a class="profile__text__logout" id="profile__text__logout" href="#">logout</a>
         </div>
-      </section>
-      <section class="profile-saved">
-        <h2 class="profile-saved__title">Posts you've saved</h2>
-        <div class="profile-saved__list"></div>
-        <div class="profile-saved__no-saved">
-          <img src="../assets/no-posts-illustration.svg" alt="No Posts" />
-          <p class="profile-saved__no-saved__text">
-            You have not saved any posts!
+        <img src="../assets/profile-picture.svg" alt="profile picture" class="profile__picture" />
+      </div>
+    </header>
+    <section class="profile-desc">
+      <img src="../assets/edit.svg" alt="" class="profile-desc__edit" />
+      <div class="profile-desc__data">
+        <div class="profile-desc__identity">
+          <img src="../assets/profile-picture.svg" alt="Profile Picture" class="profile-desc__identity__picture" />
+          <h2 class="profile-desc__identity__username" id="username">
+            Adrian Hartanto
+          </h2>
+        </div>
+        <div class="profile-desc__bio__container">
+          <h3 class="profile-desc__bio__title">Bio</h3>
+          <p class="profile-desc__bio" id="bio">
+            Hello there my name is Adrian Hartanto, and I love travelling to
+            different places and experiencing different cultures all around
+            the world. I am currently a college student living in Indonesia.
           </p>
         </div>
-      </section>
-    </main>
-    <div class="edit-profile"></div>
-  </body>
-  <script src="../js/profile.js"></script>
+        <div class="profile-desc__badges__container">
+          <h3 class="profile-desc__badges__title">Badges</h3>
+          <div class="profile-desc__badges" id="badges"></div>
+        </div>
+      </div>
+
+      <div class="profile-desc__stats">
+        <div class="profile-desc__stats__created">
+          <h3 class="profile-desc__stats__created__title">Posts Created</h3>
+          <p class="profile-desc__stats__created__num" id="created">0</p>
+        </div>
+        <div class="profile-desc__stats__liked">
+          <h3 class="profile-desc__stats__liked__title">Posts Liked</h3>
+          <p class="profile-desc__stats__liked__num" id="liked">2</p>
+        </div>
+      </div>
+    </section>
+    <section class="profile-saved">
+      <h2 class="profile-saved__title">Posts you've saved</h2>
+      <div class="profile-saved__list"></div>
+      <div class="profile-saved__no-saved">
+        <img src="../assets/no-posts-illustration.svg" alt="No Posts" />
+        <p class="profile-saved__no-saved__text">
+          You have not saved any posts!
+        </p>
+      </div>
+    </section>
+  </main>
+  <div class="edit-profile"></div>
+</body>
+<script src="../js/profile.js"></script>
+
 </html>

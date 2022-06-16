@@ -1,105 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
-    <title>Travelog - Dashboard</title>
-  </head>
 
-  <body>
-    <nav>
-      <div class="sidebar">
-        <img class="sidebar__logo" src="../assets/SideBar Icon/Travelog.svg" />
-        <div class="sidebar-icon">
-          <a href="/dashboard">
-            <div>
-              <img class="homeIcon" src="../assets/SideBar Icon/home.svg" />
-            </div>
-          </a>
-          <a href="/destination">
-            <div>
-              <img class="locIcon" src="../assets/SideBar Icon/locations.svg" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+  <title>Travelog - Dashboard</title>
+</head>
+
+<body>
+  <nav>
+    <div class="sidebar">
+      <img class="sidebar__logo" src="../assets/SideBar Icon/Travelog.svg" />
+      <div class="sidebar-icon">
+        <a href="/dashboard">
+          <div>
+            <img class="homeIcon" src="../assets/SideBar Icon/home.svg" />
+          </div>
+        </a>
+        <a href="/destination">
+          <div>
+            <img class="locIcon" src="../assets/SideBar Icon/locations.svg" />
+          </div>
+        </a>
+        <a href="/profile">
+          <div>
+            <img class="profileIcon" src="../assets/SideBar Icon/profile.svg" />
+          </div>
+        </a>
+        <a href="/compose">
+          <div>
+            <img class="composeIcon" src="../assets/SideBar Icon/compose.svg" />
+          </div>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header>
+      <div class="title">Travelog</div>
+      <div class="profile">
+        <div class="profile_detail">
+          <p><span>Hi, </span><span id="username">Placeholder</span></p>
+          <p id="logoutBtn">Logout</p>
+        </div>
+        <div class="profile_img">
+          <img src="../assets/profile-picture.svg" />
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="left-container">
+        <div class="top-destination-title">Top Destinations</div>
+        <div class="country-flag">
+          <a href="">
+            <div class="KL">
+              <div>
+                <img class="malayFlag" src="../assets/Flag/malaysia.svg" />
+              </div>
+              <h2 class="KualaLumpur">Kuala Lumpur</h2>
             </div>
           </a>
           <a href="">
-            <div>
-              <img
-                class="profileIcon"
-                src="../assets/SideBar Icon/profile.svg"
-              />
+            <div class="BGK">
+              <div>
+                <img class="bgkFlag" src="../assets/Flag/thailand.svg" />
+              </div>
+              <h2 class="Bangkok">Bangkok</h2>
             </div>
           </a>
-          <a href="/compose">
-            <div>
-              <img
-                class="composeIcon"
-                src="../assets/SideBar Icon/compose.svg"
-              />
+          <a href="">
+            <div class="JKT">
+              <div>
+                <img class="idnFlag" src="../assets/Flag/indo.svg" />
+              </div>
+              <h2 class="Jakarta">Jakarta</h2>
+            </div>
+          </a>
+          <a href="">
+            <div class="SG">
+              <div>
+                <img class="sgFlag" src="../assets/Flag/singapore.svg" />
+              </div>
+              <h2 class="Singapore">Singapore</h2>
             </div>
           </a>
         </div>
-      </div>
-    </nav>
-
-    <main>
-      <header>
-        <div class="title">Travelog</div>
-        <div class="profile">
-          <div class="profile_detail">
-            <p><span>Hi, </span><span id="username">Placeholder</span></p>
-            <p id="logoutBtn">Logout</p>
-          </div>
-          <div class="profile_img">
-            <img src="../assets/profile-picture.svg" />
-          </div>
-        </div>
-      </header>
-
-      <div class="content">
-        <section class="left-container">
-          <div class="top-destination-title">Top Destinations</div>
-          <div class="country-flag">
-            <a href="">
-              <div class="KL">
-                <div>
-                  <img class="malayFlag" src="../assets/Flag/malaysia.svg" />
-                </div>
-                <h2 class="KualaLumpur">Kuala Lumpur</h2>
-              </div>
-            </a>
-            <a href="">
-              <div class="BGK">
-                <div>
-                  <img class="bgkFlag" src="../assets/Flag/thailand.svg" />
-                </div>
-                <h2 class="Bangkok">Bangkok</h2>
-              </div>
-            </a>
-            <a href="">
-              <div class="JKT">
-                <div>
-                  <img class="idnFlag" src="../assets/Flag/indo.svg" />
-                </div>
-                <h2 class="Jakarta">Jakarta</h2>
-              </div>
-            </a>
-            <a href="">
-              <div class="SG">
-                <div>
-                  <img class="sgFlag" src="../assets/Flag/singapore.svg" />
-                </div>
-                <h2 class="Singapore">Singapore</h2>
-              </div>
-            </a>
-          </div>
-        </section>
-        <section class="right-container">
-          <div class="most-viewed-container">
-            <div class="most-viewed-title">Most Viewed</div>
-            <div class="postContainer" id="postViewContainer">
-              <!-- <div class="post">
+      </section>
+      <section class="right-container">
+        <div class="most-viewed-container">
+          <div class="most-viewed-title">Most Viewed</div>
+          <div class="postContainer" id="postViewContainer">
+            <!-- <div class="post">
               <div class="postHeader">
                 <div class="title-post">My Experience in Jakarta!</div>
                 <h6 class="author">by Gian R.</h6>
@@ -115,7 +110,7 @@
                 sit amet sollicitudin urna gravida sit amet. Proin justo purus, hendrerit nec risus
                 nec, ornare interdum ipsum.</p>
             </div> -->
-              <!-- <div class="post">
+            <!-- <div class="post">
               <div class="postHeader">
                 <div class="title-post">Holiday in Singapore</div>
                 <h6 class="author">by Reynard J.</h6>
@@ -131,12 +126,12 @@
                 sit amet sollicitudin urna gravida sit amet. Proin justo purus, hendrerit nec risus
                 nec, ornare interdum ipsum.</p>
             </div> -->
-            </div>
           </div>
-          <div class="most-liked-container">
-            <div class="most-liked-title">Most Liked</div>
-            <div class="postContainer" id="postLikeContainer">
-              <!-- <div class="post">
+        </div>
+        <div class="most-liked-container">
+          <div class="most-liked-title">Most Liked</div>
+          <div class="postContainer" id="postLikeContainer">
+            <!-- <div class="post">
               <div class="postHeader">
                 <div class="title-post">My Experience in Jakarta!</div>
                 <h6 class="author">by Gian R.</h6>
@@ -152,7 +147,7 @@
                 sit amet sollicitudin urna gravida sit amet. Proin justo purus, hendrerit nec risus
                 nec, ornare interdum ipsum.</p>
             </div> -->
-              <!-- <div class="post">
+            <!-- <div class="post">
               <div class="postHeader">
                 <div class="title-post">Holiday in Singapore</div>
                 <h6 class="author">by Reynard J.</h6>
@@ -168,11 +163,12 @@
                 sit amet sollicitudin urna gravida sit amet. Proin justo purus, hendrerit nec risus
                 nec, ornare interdum ipsum.</p>
             </div> -->
-            </div>
           </div>
-        </section>
-      </div>
-    </main>
-  </body>
-  <script src="../js/dashboard.js"></script>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+<script src="../js/dashboard.js"></script>
+
 </html>
