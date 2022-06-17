@@ -59,6 +59,7 @@ async function showEditPage() {
 }
 
 async function updateProfile(e) {
+  e.preventDefault();
   const res = await fetch("/user/api/", {
     method: "PATCH",
     headers: {
@@ -75,7 +76,6 @@ async function updateProfile(e) {
   currentUsername.innerText = usernameEdit.value;
   username.innerText = usernameEdit.value;
   bio.innerText = bioEdit.value;
-  e.preventDefault();
 }
 
 // Close and open profile edit form
