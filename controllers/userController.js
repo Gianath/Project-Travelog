@@ -8,12 +8,28 @@ const userModel = require("../models/user");
 const postModel = require("../models/post");
 
 const getCurrentUser = async (req, res) => {
-  const { username, email, bio, postCreated, postLiked } =
-    await userModel.findOne({
-      _id: req.userID,
-    });
+  const { username, email, bio, postCreated, postLiked, likedPostID } =
+    await userModel
+      .findOne({
+        _id: req.userID,
+      })
+      .populate({
+        path: "likedPostID",
+        populate: {
+          path: "authorID",
+          model: "User",
+        },
+      });
 
-  res.json({ status: "success", username, email, bio, postCreated, postLiked });
+  res.json({
+    status: "success",
+    username,
+    email,
+    bio,
+    postCreated,
+    postLiked,
+    likedPostID,
+  });
 };
 
 const logoutCurrentUser = async (req, res) => {

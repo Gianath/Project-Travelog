@@ -31,6 +31,7 @@ const regions = [
 
 const params = window.location.search;
 const dest = new URLSearchParams(params).get("dest");
+const id = new URLSearchParams(params).get("id");
 
 var searchResult = regions;
 
@@ -47,6 +48,8 @@ window.onload = async () => {
 
     if (dest) {
       showPopularDest(dest);
+    } else if (id) {
+      renderPost(id);
     }
   } catch (error) {}
 };

@@ -11,7 +11,9 @@ const username = document.getElementById("username"),
   emailEdit = document.getElementById("email-edit"),
   passwordEdit = document.getElementById("password-edit"),
   bioEdit = document.getElementById("bio-edit"),
-  logoutBtn = document.getElementById("profile__text__logout");
+  logoutBtn = document.getElementById("profile__text__logout"),
+  postLiked = document.getElementById("profile-liked__list"),
+  noLikedPosts = document.getElementById("no-liked");
 
 window.onload = async () => {
   let res = await fetch("/user/api").then((res) => res.json());
@@ -45,6 +47,28 @@ function displayInformation(res) {
   bio.innerText = res.bio;
   createdPosts.innerText = res.postCreated;
   likedPosts.innerText = res.postLiked;
+
+  var postsLiked = res.likedPostID;
+  postLiked.innerHTML = "";
+  if (postsLiked.length === 0) {
+    noLikedPosts.style.display = "flex";
+    return;
+  }
+  for (const post of postsLiked) {
+    var Difference_In_Time = new Date() - new Date(post.date).getTime();
+
+    var Difference_In_Days = parseInt(Difference_In_Time / (1000 * 3600 * 24));
+
+    var totalDays = Difference_In_Days > 0 ? Difference_In_Days + "d" : "Today";
+
+    postLiked.innerHTML += `
+    <div class="profile-liked__post" data-id="${post._id}">
+          <p class="profile-liked__post__title">${post.title}</p>
+          <p class="profile-liked__post__desc">by ${post.authorID.username} / ${totalDays} ago</p>
+    </div>
+    `;
+  }
+  createEventListenerLikedPost();
 }
 
 async function showEditPage() {
@@ -76,6 +100,16 @@ async function updateProfile(e) {
   currentUsername.innerText = usernameEdit.value;
   username.innerText = usernameEdit.value;
   bio.innerText = bioEdit.value;
+}
+
+function createEventListenerLikedPost() {
+  const postsLiked = document.querySelectorAll(".profile-liked__post");
+
+  postsLiked.forEach((element) => {
+    element.addEventListener("click", () => {
+      window.location.href = `/destination?id=${element.dataset.id}`;
+    });
+  });
 }
 
 // Close and open profile edit form
