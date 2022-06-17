@@ -29,7 +29,10 @@ const logoutCurrentUser = async (req, res) => {
 
 const updateUserProfile = async (req, res) => {
   const { username, email, password, bio } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
+  var hashedPassword;
+  if (password) {
+    hashedPassword = await bcrypt.hash(password, 10);
+  }
 
   try {
     const resp = await userModel.findOneAndUpdate(
