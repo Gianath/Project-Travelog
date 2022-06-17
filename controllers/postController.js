@@ -1,4 +1,5 @@
 const postModel = require("../models/post");
+const userModel = require("../models/user");
 
 const createPost = async (req, res) => {
   try {
@@ -11,6 +12,15 @@ const createPost = async (req, res) => {
       city: city,
       country: country,
     });
+
+    const resp2 = await userModel.findOneAndUpdate(
+      {
+        _id: userID,
+      },
+      {
+        $inc: { postCreated: 1 },
+      }
+    );
 
     res.json({ status: "success", results: resp });
   } catch (error) {
