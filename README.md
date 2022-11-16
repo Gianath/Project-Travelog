@@ -34,4 +34,4 @@ JWT_SECRET=[SecretString]
 node app.js
 ```
 
-2. Open Browser and Browse to localhost:3000
+2. Open Browser and Browse to localhost:5000
