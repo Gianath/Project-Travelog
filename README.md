@@ -21,9 +21,9 @@ npm install
 4. Create an .env file such as below
 
 ```ini
-  #Replace the [] with the appropriate data
-  MONGO_URI=[MongoDBURI]
-  JWT_SECRET=[SecretString]
+#Replace the [] with the appropriate data
+MONGO_URI=[MongoDBURI]
+JWT_SECRET=[SecretString]
 ```
 
 ## Usage
